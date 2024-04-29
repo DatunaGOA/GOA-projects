@@ -1,5 +1,4 @@
 
-
 name = input("please enter your name: ")
 
 lowercase_name = name.lower()
