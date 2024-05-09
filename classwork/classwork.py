@@ -1,4 +1,6 @@
 
+name= input("eneter ur name mafaka: ")
+if name == "data":
 
 
 
@@ -17,4 +19,62 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    print("ur gay")
+else:
+    print("ur very cool")
 
