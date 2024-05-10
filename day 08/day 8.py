@@ -5,5 +5,3 @@ if password == repeat_password:
     print(name, "registered succesfully")
 else:
     print("invalid input")
-
-    

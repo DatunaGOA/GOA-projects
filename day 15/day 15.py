@@ -56,3 +56,5 @@ def remove_spaces(word):
 remove_spaces("Goal- Oriented- Academy ")
 
 
+
+

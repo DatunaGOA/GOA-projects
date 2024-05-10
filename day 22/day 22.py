@@ -1,4 +1,4 @@
-
+#1
 def manual_pop(list, index=None):
     if index is not None:
         if 0 <= index < len(list):
@@ -16,6 +16,7 @@ num_list = [1, 2, 3, 4, 5]
 print(manual_pop(num_list))  
 print(manual_pop(num_list, 2))  
 
+#2
 
 def manual_count(list, element=None):
     if element is not None:
@@ -35,7 +36,7 @@ num_list2 = [10, 11, 10, 10]
 print(manual_count(num_list2))
 print(manual_count(num_list2, 3))  
 
-
+#3
 
 def manual_min(lst=None):
     if lst is None:
@@ -43,25 +44,27 @@ def manual_min(lst=None):
 
     minimum_value = lst[0]
     for num in lst:
-        if num < minimum_value:
+        if num < minimum_value: 
             minimum_value = num
 
     return minimum_value
 
-
 custom_list = [10, 13, 9, 5]
 print("Minimum value in custom list:", manual_min(custom_list))
-
-
 print("Minimum value in default list:", manual_min())
+
+
+#4
+
+
 
 def manual_max(i=None):
     if i is None:
         i = list(range(1, 11))  
 
     max_value = i[0]  
-    for num in i:
-        if num > max_value:
+    for num in i: 
+        if num > max_value: 
             max_value = num
 
     return max_value
