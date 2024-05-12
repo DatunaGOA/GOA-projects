@@ -17,8 +17,7 @@ def keyword(my_list):
         count += 1
     return count
 
-list = [1, 2, 3, 4, 5]
-print(keyword(list))
+print(keyword([1, 2, 3, 4, 5]))
 
 # გატესტეთ insert, pop, len, append და ახსენით თქვენი სიტყვებით თუ რას აკეთებს.
 
