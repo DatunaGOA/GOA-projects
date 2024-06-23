@@ -32,16 +32,24 @@ print(palindrom[::-1])
 
 #another version
 
-def is_palindrom(word):
+# def is_palindrom(word):
+#     reversed_word = ""
+
+#     for i in range(len(word) -1, -1, -1):
+#         reversed_word = reversed_word + word[i]
+
+#     print(reversed_word)
+
+def solution(string):
     reversed_word = ""
 
-    for i in range(len(word) -1, -1, -1):
-        reversed_word = reversed_word + word[i]
+    for i in range(len(string) -1, -1, -1):
+        reversed_word = reversed_word + string[i]
 
     print(reversed_word)
 
 
-is_palindrom("racecar")
+# is_palindrom("racecar")
 
 
 
