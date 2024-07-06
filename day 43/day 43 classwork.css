@@ -1,0 +1,107 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+}
+
+.container {
+    display: flex;
+    height: 100vh;
+}
+
+.left, .right {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.left {
+    background-color: #f1f1f1;
+    text-align: center;
+}
+
+.left h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+.left span {
+    color: #6a5acd;
+}
+
+.right {
+    background-color: #fff;
+    padding: 20px;
+}
+
+.form-container {
+    max-width: 400px;
+    width: 100%;
+}
+
+.form-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.social-login button {
+    background-color: #ddd;
+    border: none;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    margin-left: 10px;
+    font-size: 1.2rem;
+    cursor: pointer;
+}
+
+form {
+    margin-top: 20px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.form-group input {
+    width: calc(100% - 60px);
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.show-password {
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    margin-left: -40px;
+}
+
+.create-account {
+    width: 90%;
+    padding: 10px;
+    background-color: #6a5acd;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px
+}
+
+.signin-link {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.signin-link a {
+    color: #6a5acd;
+    text-decoration: none;
+}
+
