@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="day 52.2.classwork.css">
+    <title>day 52.2 classwork</title>
+</head>
+<body>
+    <div id="image-container">
+        <img id="myImage" src="image.png" alt="Image">
+        <br>
+        <button id="button1">Change to Image 2</button>
+        <button id="button2">Change to Image 3</button>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', (event) => {
+
+    const image = document.getElementById('myImage');
+    const button1 = document.getElementById('button1');
+    const button2 = document.getElementById('button2');
+    
+
+    button1.addEventListener('click', () => {
+ 
+        image.src = 'screenshot.png';
+   
+        alert('Image changed to Image 2');
+    });
+
+
+    button2.addEventListener('click', () => {
+ 
+        image.src = 'screen.png';
+
+        alert('Image changed to Image 3');
+    });
+});
+
+    </script>
+</body>
+</html>
