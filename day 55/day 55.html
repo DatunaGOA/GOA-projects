@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Counter</title>
+    <link rel="stylesheet" href="day 55.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Simple Counter</h1>
+        <p id="counter">0</p>
+        <div class="buttons">
+            <button onclick="increment()">+1</button>
+            <button onclick="reset()">Reset</button>
+            <button onclick="decrement()">-1</button>
+        </div>
+    </div>
+    <script src="day 55.js">let count = 0;
+
+        function increment() {
+            count++;
+            document.getElementById('counter').innerText = count;
+        }
+        
+        function reset() {
+            count = 0;
+            document.getElementById('counter').innerText = count;
+        }
+        
+        function decrement() {
+            count--;
+            document.getElementById('counter').innerText = count;
+        }</script>
+</body>
+</html>
