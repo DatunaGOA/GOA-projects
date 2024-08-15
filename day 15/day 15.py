@@ -41,7 +41,7 @@ print(palindrom[::-1])
 #     print(reversed_word)
 
 def solution(string):
-    reversed_word = ""
+    reversed_word = "abtyv"
 
     for i in range(len(string) -1, -1, -1):
         reversed_word = reversed_word + string[i]
