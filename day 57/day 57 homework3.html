@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>day 57</title>
+    <style>
+        #hiddenElement {
+            display: none;
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            background-color: #f9f9f9;
+        }
+    </style>
+</head>
+<body>
+    <!-- Button to trigger the action -->
+    <button id="showButton">click on this</button>
+    
+    <!-- Element to be shown -->
+    <div id="hiddenElement">the element will appear after click</div>
+
+    <script>
+        const button = document.getElementById('showButton');
+        const element = document.getElementById('hiddenElement');
+        button.addEventListener('click', function() {
+            element.style.display = 'block';
+        });
+    </script>
+</body>
+</html>

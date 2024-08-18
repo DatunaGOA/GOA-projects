@@ -1,0 +1,40 @@
+def max_multiple(divisor, bound):
+    return (bound // divisor) * divisor
+
+
+#2 
+
+def get_issuer(card_number):
+
+    card_str = str(card_number)
+    
+    length = len(card_str)
+
+    if length == 15 and (card_str.startswith("34") or card_str.startswith("37")):
+      return "AMEX"
+    
+    if length == 16 and card_str.startswith("6011"):
+
+        return "Discover"
+
+    if length == 16 and card_str[:2] in ["51", "52", "53", "54", "55"]:
+
+        return "Mastercard"
+
+    if (length == 13 or length == 16) and card_str.startswith("4"):
+
+        return "VISA"
+
+    return "Unknown"
+
+#3. 6kyu
+def unique_in_order(sequence):
+    result = []
+    for item in sequence:
+        if not result or result[-1] != item:
+            result.append(item)
+    
+    return result
+
+
+    
