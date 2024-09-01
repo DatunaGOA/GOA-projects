@@ -128,3 +128,16 @@ while True:
         if event.type == pygame.QUIT:
             pygame.quit()
             quit()
+
+
+
+
+
+
+
+
+
+
+
+
+#fbi fhauiifb fhaui bfabi byifai b8fa bfa h faibfi afhia bfai hf9ufh9bfuid
