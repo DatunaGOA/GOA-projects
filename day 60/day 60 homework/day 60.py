@@ -17,4 +17,6 @@ def increment_string(string):
         return text_part + new_number
     else:
 
-        return string + '1'
+        return string + '1' 
+    
+    
