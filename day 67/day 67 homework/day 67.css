@@ -1,0 +1,28 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background: linear-gradient(135deg, #6f86d6, #48c6ef);
+    font-family: Arial, sans-serif;
+    color: white;
+}
+.content {
+    text-align: center;
+    font-size: 2em;
+}
+
+.loader {
+    border: 16px solid rgba(255, 255, 255, 0.3); /* Light transparent white */
+    border-top: 16px solid #ffcc00; /* Yellow */
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    animation: spin 3s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}

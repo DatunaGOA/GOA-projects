@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>day 66</title>
+</head>
+<body>
+
+    <!-- დავალება 1 -->
+    <script>
+        const p = document.createElement('p');
+        p.textContent = 'Hello World';
+        document.body.appendChild(p);
+    </script>
+
+    <!-- დავალება 2 -->
+    <div id="originalDiv">This is the original div.</div>
+    <script>
+        const originalDiv = document.getElementById('originalDiv');
+        const clonedDiv = originalDiv.cloneNode(true);
+        document.body.appendChild(clonedDiv);
+    </script>
+
+    <!-- დავალება 3 -->
+    <ul>
+        <li id="item1">Item 1</li>
+        <li id="item2">Item 2</li>
+        <li id="item3">Item 3</li>
+    </ul>
+    <script>
+        const itemToRemove = document.getElementById('item2');
+        itemToRemove.parentNode.removeChild(itemToRemove);
+    </script>
+
+    <!-- დავალება 4 -->
+    <h1 id="header">This is a header</h1>
+    <script>
+        const h1 = document.getElementById('header');
+        const h2 = document.createElement('h2');
+        h2.textContent = 'This is a new header';
+        h1.parentNode.replaceChild(h2, h1);
+    </script>
+
+    <!-- დავალება 5-->
+    <p id="removable">This paragraph will be removed.</p>
+    <script>
+        const paragraph = document.getElementById('removable');
+        paragraph.remove();
+    </script>
+
+    <!-- დავალება 6 -->
+    <div id="container"></div>
+    <script>
+        const container = document.getElementById('container');
+        for (let i = 1; i <= 3; i++) {
+            const span = document.createElement('span');
+            span.textContent = `Span ${i} `;
+            container.appendChild(span);
+        }
+    </script>
+
+    <!-- დავალება 7 -->
+    <button id="originalButton">Click Me</button>
+    <script>
+        const button = document.getElementById('originalButton');
+        button.addEventListener('click', () => alert('Button clicked!'));
+
+        const clonedButton = button.cloneNode(true);
+        document.body.appendChild(clonedButton);
+    </script>
+
+    <!-- დავალება 8 -->
+    <img id="image" src="https://via.placeholder.com/150" alt="Placeholder Image">
+    <div id="newDiv"></div>
+    <script>
+        const image = document.getElementById('image');
+        const newDiv = document.getElementById('newDiv');
+        newDiv.appendChild(image);
+    </script>
+
+    <!--დავალება 9 -->
+    <div id="toggleMessage" style="display: none;">This message can be toggled.</div>
+    <button id="toggleButton">Toggle Message</button>
+    <script>
+        const toggleButton = document.getElementById('toggleButton');
+        toggleButton.addEventListener('click', () => {
+            const message = document.getElementById('toggleMessage');
+            message.style.display = message.style.display === 'none' ? 'block' : 'none';
+        });
+    </script>
+
+</body>
+</html>
