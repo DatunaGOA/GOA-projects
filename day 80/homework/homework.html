@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Grid & Flexbox Layout</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    .layout {
+      height: 100vh;
+      margin: 0;
+    }
+    .item {
+      background-color: #e05eff;
+      margin: 5px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      font-size: 1.5rem;
+    }
+
+    .grid-container {
+      display: grid;
+      grid-template-rows: 1fr 1fr 1fr; /* 3 თანაბარი რიგი */
+    }
+
+    .flex-container {
+      display: flex;
+      flex-direction: column; /* ვერტიკალური მიმართულება */
+    }
+  </style>
+</head>
+<body>
+
+  <div class="layout grid-container">
+    <div class="item">Grid Section 1</div>
+    <div class="item">Grid Section 2</div>
+    <div class="item">Grid Section 3</div>
+  </div>
+
+
+  <div class="layout flex-container">
+    <div class="item">Flex Section 1</div>
+    <div class="item">Flex Section 2</div>
+    <div class="item">Flex Section 3</div>
+  </div>
+</body>
+</html>

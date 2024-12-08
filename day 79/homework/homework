@@ -1,0 +1,10 @@
+import random
+
+def shuffle(arr):
+    random.shuffle(arr)
+
+# Test
+arr = [1, 2, 3, 4, 5]
+print("Original list:", arr)
+shuffle(arr)
+print("Shuffled list:", arr)
