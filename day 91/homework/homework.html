@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>day 91</title>
+    <style>
+    * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f9;
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    height: 100vh;
+    padding: 20px;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+h1 {
+    font-size: 2.5rem;
+    color: #2c3e50;
+}
+
+.container {
+    width: 100%;
+    max-width: 1200px;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.search-section {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+#searchInput {
+    padding: 10px;
+    width: 300px;
+    font-size: 1rem;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 1rem;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.bookstore-section, .collection-section {
+    padding: 20px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.book-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.book-item {
+    background-color: #ecf0f1;
+    padding: 15px;
+    border-radius: 6px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+
+.book-item h3 {
+    font-size: 1.2rem;
+    color: #34495e;
+    margin-bottom: 10px;
+}
+
+.book-item p {
+    color: #7f8c8d;
+    font-size: 1rem;
+    margin-bottom: 10px;
+}
+
+.book-item .price {
+    color: #e74c3c;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.book-item button {
+    background-color: #2ecc71;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    color: white;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s;
+
+}
+
+.book-item button.added {
+    background-color: #f39c12;
+}
+
+.book-item button.remove {
+    background-color: #e74c3c;
+}
+
+
+.book-item img {
+    width: 100%;
+    height: auto;
+    border-radius: 6px;
+    margin-bottom: 10px;
+}
+
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Bookstore</h1>
+    </header>
+
+    <div class="container">
+        <section class="search-section">
+            <input type="text" id="searchInput" placeholder="Search for a book..." oninput="searchBooks(event)">
+            <button onclick="searchBooks()">Search</button>
+        </section>
+
+        <section class="bookstore-section">
+            <h2>Available Books</h2>
+            <div id="bookstore-list" class="book-list"></div>
+        </section>
+
+        <section class="collection-section">
+            <h2>Your Collection</h2>
+            <div id="personal-collection" class="book-list"></div>
+        </section>
+    </div>
+
+    <script>
+        const bookstore = new Map([ 
+            ["001", { title: "ფიქრის მექანიკა", author: "პეტრე სულამიძე", genre: "ფილოსოფია", price: 25, status: "available" }],
+            ["002", { title: "სამყაროს საიდუმლოებები", author: "მარიამ გაბუნია", genre: "მეცნიერება", price: 30, status: "available" }],
+            ["003", { title: "ჰარი პოტერი და ჯადოქრების ქვის ამბავი", author: "ჯ. კ. როულინგი", genre: "ფანტასტიკა", price: 35, status: "available" }],
+            ["004", { title: "გადარჩენა აუშვიცში", author: "პრიმო ლევი", genre: "ბიოგრაფია", price: 28, status: "available" }]
+        ]);
+
+        const personalCollection = new Map();
+
+        function addToCollection(id) {
+            if (bookstore.has(id) && bookstore.get(id).status === "available") {
+                personalCollection.set(id, { ...bookstore.get(id), status: "added" });
+                bookstore.get(id).status = "added";
+                renderBooks();
+                console.log(`${bookstore.get(id).title} დამატებულია კოლექციაში.`);
+            }
+        }
+
+        function removeFromCollection(id) {
+            if (personalCollection.has(id)) {
+                bookstore.get(id).status = "available";
+                personalCollection.delete(id);
+                renderBooks();
+                console.log(`${id} წაშლილია კოლექციიდან.`);
+            }
+        }
+
+        function searchBooks() {
+            const query = document.getElementById('searchInput').value.toLowerCase();
+            renderBooks(query);
+        }
+
+        function renderBooks(query = "") {
+            // Render bookstore
+            const bookstoreList = document.getElementById('bookstore-list');
+            bookstoreList.innerHTML = '';
+            for (const [id, book] of bookstore) {
+                if (book.title.toLowerCase().includes(query) || book.author.toLowerCase().includes(query)) {
+                    const bookItem = document.createElement('div');
+                    bookItem.classList.add('book-item');
+                    bookItem.innerHTML = `
+                        <h3>${book.title}</h3>
+                        <p>Author: ${book.author}</p>
+                        <p>Genre: ${book.genre}</p>
+                        <p class="price">$${book.price}</p>
+                        <button class="${book.status === 'added' ? 'added' : ''}" 
+                                onclick="${book.status === 'added' ? `removeFromCollection('${id}')` : `addToCollection('${id}')`}">
+                            ${book.status === 'added' ? 'Remove from Collection' : 'Add to Collection'}
+                        </button>
+                    `;
+                    bookstoreList.appendChild(bookItem);
+                }
+            }
+
+            // Render personal collection
+            const collectionList = document.getElementById('personal-collection');
+            collectionList.innerHTML = '';
+            for (const [id, book] of personalCollection) {
+                const bookItem = document.createElement('div');
+                bookItem.classList.add('book-item');
+                bookItem.innerHTML = `
+                    <h3>${book.title}</h3>
+                    <p>Author: ${book.author}</p>
+                    <p>Genre: ${book.genre}</p>
+                    <p class="price">$${book.price}</p>
+                    <button class="remove" onclick="removeFromCollection('${id}')">Remove from Collection</button>
+                `;
+                collectionList.appendChild(bookItem);
+            }
+        }
+
+        renderBooks();
+    </script>
+</body>
+</html>
