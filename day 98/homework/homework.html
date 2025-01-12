@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>day 98 game</title>
+</head>
+<body>
+    <div id="welcome"></div>
+    <input type="color" id="color-picker">
+    <input type="number" id="guess" placeholder="Guess the number">
+    <button id="submit-guess">Submit Guess</button>
+    <p id="score">Score: 0</p>
+    <script>
+        let userName = localStorage.getItem("userName");
+        let score = parseInt(localStorage.getItem("score")) || 0;
+        let range = 2;
+        let randomNumber = Math.ceil(Math.random() * range);
+
+        if (!userName) {
+            userName = prompt("Enter your name:");
+            localStorage.setItem("userName", userName);
+        }
+
+        document.getElementById("welcome").innerText = `Welcome, ${userName}!`;
+        document.getElementById("score").innerText = `Score: ${score}`;
+
+        document.getElementById("submit-guess").addEventListener("click", () => {
+            const guess = parseInt(document.getElementById("guess").value);
+            if (guess === randomNumber) {
+                score++;
+                range *= 2;
+                randomNumber = Math.ceil(Math.random() * range);
+                alert("Correct! Next level.");
+            } else {
+                alert("Wrong! Try again.");
+            }
+            localStorage.setItem("score", score);
+            document.getElementById("score").innerText = `Score: ${score}`;
+        });
+
+        document.getElementById("color-picker").addEventListener("input", (e) => {
+            document.body.style.backgroundColor = e.target.value;
+        });
+    </script>
+</body>
+</html>

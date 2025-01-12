@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>day 96</title>
+</head>
+<body>
+    <h1>Counter</h1>
+    <button id="increment">Increment</button>
+    <button id="reset">Reset</button>
+    <p>Count: <span id="count">0</span></p>
+
+    <script>
+        const countDisplay = document.getElementById('count');
+        const incrementButton = document.getElementById('increment');
+        const resetButton = document.getElementById('reset');
+
+        let count = parseInt(localStorage.getItem('count')) || 0;
+        countDisplay.textContent = count;
+
+        incrementButton.addEventListener('click', () => {
+            count++;
+            localStorage.setItem('count', count);
+            countDisplay.textContent = count;
+        });
+
+        resetButton.addEventListener('click', () => {
+            count = 0;
+            localStorage.setItem('count', count);
+            countDisplay.textContent = count;
+        });
+    </script>
+</body>
+</html>

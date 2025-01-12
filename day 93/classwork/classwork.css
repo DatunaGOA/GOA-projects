@@ -1,0 +1,5 @@
+body {
+    background-color: black;
+    color:aliceblue;
+    clip-path: polygon(20% at 0, 80% 0);
+}
