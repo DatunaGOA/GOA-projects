@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Advice Generator</title>
+  <style>
+    /* General Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    /* Body Styling */
+    body {
+      font-family: 'Lato', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      background-color: hsl(193, 38%, 86%);
+      text-align: center;
+    }
+
+    /* App Container */
+    .app-container {
+      background-color: white;
+      border-radius: 15px;
+      padding: 20px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      width: 100%;
+      max-width: 500px;
+    }
+
+    /* Advice Box */
+    .advice-box {
+      font-size: 1.5rem;
+      color: hsl(193, 38%, 45%);
+      margin-bottom: 20px;
+      line-height: 1.5;
+    }
+
+    /* Dice Button */
+    #generate-button {
+      background-color: hsl(150, 100%, 66%);
+      border: none;
+      border-radius: 50%;
+      padding: 20px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    #generate-button img {
+      width: 30px;
+      height: 30px;
+    }
+
+    /* Hover State for Button */
+    #generate-button:hover {
+      background-color: hsl(150, 100%, 50%);
+    }
+
+    /* Responsive Design */
+    @media (max-width: 600px) {
+      .app-container {
+        padding: 15px;
+      }
+
+      .advice-box {
+        font-size: 1.2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="app-container">
+    <div class="advice-box" id="advice-text">
+      Click the dice icon to get advice.
+    </div>
+    <button id="generate-button">
+      <img src="https://cdn-icons-png.flaticon.com/512/1502/1502486.png" alt="Dice icon">
+    </button>
+  </div>
+
+  <script>
+    document.getElementById('generate-button').addEventListener('click', fetchAdvice);
+
+    function fetchAdvice() {
+      fetch('https://api.adviceslip.com/advice')
+        .then(response => response.json())
+        .then(data => {
+          document.getElementById('advice-text').textContent = `"${data.slip.advice}"`;
+        })
+        .catch(error => {
+          document.getElementById('advice-text').textContent = 'Failed to fetch advice. Please try again.';
+        });
+    }
+  </script>
+</body>
+</html>

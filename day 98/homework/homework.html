@@ -3,45 +3,100 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>day 98 game</title>
-</head>
-<body>
-    <div id="welcome"></div>
-    <input type="color" id="color-picker">
-    <input type="number" id="guess" placeholder="Guess the number">
-    <button id="submit-guess">Submit Guess</button>
-    <p id="score">Score: 0</p>
-    <script>
-        let userName = localStorage.getItem("userName");
-        let score = parseInt(localStorage.getItem("score")) || 0;
-        let range = 2;
-        let randomNumber = Math.ceil(Math.random() * range);
-
-        if (!userName) {
-            userName = prompt("Enter your name:");
-            localStorage.setItem("userName", userName);
+    <title>day 98/Guess the number</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+            text-align: center;
         }
 
-        document.getElementById("welcome").innerText = `Welcome, ${userName}!`;
-        document.getElementById("score").innerText = `Score: ${score}`;
+        #game {
+            display: none;
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
 
-        document.getElementById("submit-guess").addEventListener("click", () => {
-            const guess = parseInt(document.getElementById("guess").value);
-            if (guess === randomNumber) {
-                score++;
-                range *= 2;
-                randomNumber = Math.ceil(Math.random() * range);
-                alert("Correct! Next level.");
-            } else {
-                alert("Wrong! Try again.");
+        input, button {
+            padding: 10px;
+            margin: 10px;
+            font-size: 16px;
+            border-radius: 5px;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="start">
+        <label>your name: </label>
+        <input type="text" id="name" placeholder="Your name">
+        <button onclick="start()">Start Game</button>
+    </div>
+
+    <div id="game">
+        <h1>hello, <span id="userName"></span>!</h1>
+        <label>pick a color: </label>
+        <input type="color" id="color" onchange="changeColor()">
+        <h2>Score: <span id="score">0</span></h2>
+        <p>guess the number: <span id="range">1-2</span></p>
+        <input type="number" id="guess">
+        <button onclick="check()">Check</button>
+    </div>
+
+    <script>
+        let score = 0;
+        let range = 2;
+        let correctNumber = 0;
+        
+        function start() {
+            let name = document.getElementById('name').value;
+            if (name) {
+                document.getElementById('userName').innerText = name;
+                document.getElementById('start').style.display = 'none';
+                document.getElementById('game').style.display = 'block';
+                newNumber();
             }
-            localStorage.setItem("score", score);
-            document.getElementById("score").innerText = `Score: ${score}`;
-        });
+        }
 
-        document.getElementById("color-picker").addEventListener("input", (e) => {
-            document.body.style.backgroundColor = e.target.value;
-        });
+        function changeColor() {
+            let color = document.getElementById('color').value;
+            document.body.style.backgroundColor = color;
+        }
+
+        function newNumber() {
+            correctNumber = Math.floor(Math.random() * range) + 1;
+        }
+
+        function check() {
+            let guess = document.getElementById('guess').value;
+            if (parseInt(guess) === correctNumber) {
+                score++;
+                range *= 2; // Increase difficulty
+                document.getElementById('score').innerText = score;
+                newNumber();
+            } else {
+                alert("Try again!");
+            }
+            document.getElementById('range').innerText = `1-${range}`;
+        }
     </script>
+
 </body>
 </html>
