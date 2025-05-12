@@ -7,6 +7,6 @@ def count_first_char(s):  # vigebt definitons
 rogorxar = "kargad"
 rogorxar2 = "dzalian kargad"
 print (count_first_char(rogorxar)) #gamoitans 1 radgan marto k aris pirveli aso
-print (count_first_char(rogorxar2))
+print (count_first_char(rogorxar2)) #gamoitans 2 radgan d da k aris pirveli asoebi
 
 
